@@ -1,18 +1,19 @@
 import React from 'react';
-import Counter3 from './03/Counter3';
+import './sass/materialize.scss';
+import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 1,
-    };
-  }
-  increaseCount() {
-    this.setState(({ count }) => ({ count: count + 1 }));
-  }
   render() {
-    return <Counter3 />;
+    return (
+      <div>
+        <nav>
+          <div className="nav-wrapper">
+            <div>두잇! 리액트 시작하기</div>
+          </div>
+        </nav>
+        <h1>머티리얼 CSS</h1>
+      </div>
+    );
   }
 }
 

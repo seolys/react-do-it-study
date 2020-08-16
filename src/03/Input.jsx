@@ -55,10 +55,11 @@ Input.propTypes = {
   onFocus: PropTypes.func,
   autoFocus: PropTypes.bool,
 };
-Input.defalutProps = {
+Input.defaultProps = {
   onChange: () => {},
   onFocus: () => {},
   autoFocus: false,
   type: 'text',
 };
+
 export default Input;

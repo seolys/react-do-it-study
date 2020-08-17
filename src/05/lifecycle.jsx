@@ -1,10 +1,13 @@
 import React from 'react';
 import lifecycle from 'recompose/lifecycle';
+import compose from 'recompose/compose';
+import withLoading from './withLoading';
 
 function Page({ content }) {
   return (
     <div>
-      페이지 로딩이 완료되었습니다<div className="">{content}</div>
+      페이지 로딩이 완료되었습니다.
+      {content}
     </div>
   );
 }
@@ -19,3 +22,4 @@ export const withLoadData = lifecycle({
 });
 
 export const PageWithLoadData = withLoadData(Page);
+export const PageWithLoadDataAndLoading = compose(withLoadData, withLoading('서버 요청중'))(Page);

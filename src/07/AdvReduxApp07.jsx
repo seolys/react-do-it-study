@@ -4,7 +4,12 @@ import configureStore from './configureStore';
 import { setCollection } from './actions/collectionActions01';
 import { setAge } from './actions/collectionActions02';
 
-class AdvReduxApp05 extends PureComponent {
+import ContainerComponent from './containers/ContainerComponent';
+import PresentationComponent from './PresentationComponent';
+
+import DispatchContainer01 from './containers/DispatchContainer01';
+
+class AdvReduxApp extends PureComponent {
   store = configureStore({ loading: false });
 
   componentDidMount() {
@@ -15,7 +20,6 @@ class AdvReduxApp05 extends PureComponent {
       ]),
     );
     this.store.dispatch(setAge(2, 55));
-
     const { collection } = this.store.getState();
     const { ids, entities } = collection;
     const originalPayload = ids.map((id) => entities[id]);
@@ -23,8 +27,15 @@ class AdvReduxApp05 extends PureComponent {
   }
 
   render() {
-    return <Provider store={this.store}>리덕스 예제</Provider>;
+    return (
+      <Provider store={this.store}>
+        화면 컴포넌트: <PresentationComponent userName="화면 컴포넌트" />
+        <br />
+        데이터 컴포넌트: <ContainerComponent id={2} />
+        <br />
+        액션 데이터 컴포넌트: <DispatchContainer01 />
+      </Provider>
+    );
   }
 }
-
-export default AdvReduxApp05;
+export default AdvReduxApp;

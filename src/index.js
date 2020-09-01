@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './doit-ui/app.css';
+import CoinApp from './08/CoinApp';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(<CoinApp />, document.getElementById('root'));
+
+serviceWorker.unregister();

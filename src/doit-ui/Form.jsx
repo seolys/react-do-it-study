@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const { Provider, Consumer } = React.createContext({});
 
-class FormProvider extends PureComponent {
+class FormProvider extends React.PureComponent {
   static Consumer = Consumer;
-  static getDerivedStateFromProps({ initValues }) {
+  static getDerivedStateFromProps({ initValues }, prevState) {
     const values = initValues !== prevState.initValues ? initValues : prevState.values;
 
     return {
@@ -31,18 +31,23 @@ class FormProvider extends PureComponent {
       this.props.onSubmit(values);
     }
   }
+
   onChange(name, updatedValue) {
-    this.validate(this.state.values);
-    this.setState(({ values }) => ({
-      values: {
-        ...values,
-        [name]: updatedValue,
-      },
-    }));
+    this.setState(
+      ({ values }) => ({
+        values: {
+          ...values,
+          [name]: updatedValue,
+        },
+      }),
+      () => this.validate(this.state.values),
+    );
   }
+
   reset() {
     this.setState({ values: {} });
   }
+
   validate(values) {
     const { validate } = this.props;
     if (!validate) {
@@ -53,11 +58,12 @@ class FormProvider extends PureComponent {
       errors,
     });
   }
+
   render() {
     const { values, errors } = this.state;
     return (
       <Provider
-        values={{
+        value={{
           errors,
           values,
           onChange: this.onChange,

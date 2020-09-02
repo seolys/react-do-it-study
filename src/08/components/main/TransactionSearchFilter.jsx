@@ -14,15 +14,15 @@ class TransactionSearchFilter extends PureComponent {
       <Form onSubmit={(values) => console.log(values)}>
         <Form.Consumer>
           {({ onChange, values }) => (
-            <InlineList spacingBetween={2} verticalAlign="botton">
+            <InlineList spacingBetween={2} verticalAlign="bottom">
               <Text xlarge bold>
                 검색
               </Text>
               <Select name="code" label="코인 코드" onChange={onChange} value={values['code']}>
-                <Option label="선택해주세요" />
-                <Option label="비트코인(BTX)" />
-                <Option label="이더리움(ETH)" />
-                <Option label="두잇코인(DOIT)" />
+                <Option label="선택해주세요" value="" />
+                <Option label="비트코인(BTX)" value="BTX" />
+                <Option label="이더리움(ETH)" value="ETH" />
+                <Option label="두잇코인(DOIT)" value="DOIT" />
               </Select>
               <Input
                 name="minAmount"

@@ -39,8 +39,8 @@ TransactionTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      totalPrice: PropTypes.string,
-      currentPrice: PropTypes.string,
+      totalPrice: PropTypes.number,
+      currentPrice: PropTypes.number,
       date: PropTypes.string,
     }),
   ),

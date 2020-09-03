@@ -21,6 +21,7 @@ export default (state = initState, action) => {
         }),
         {},
       );
+      console.log({ ...state, ids, entities });
       return { ...state, ids, entities };
     }
     default:

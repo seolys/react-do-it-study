@@ -1,6 +1,14 @@
 import Api from '../Api';
 
+export const LOADING_TRANSACTION_LIST = 'transactions/LOADING_TRANSACTION_LIST';
 export const SET_TRANSACTION_LIST = 'transactions/SET_TRANSACTION_LIST';
+export const SET_ERROR = 'transactions/SET_ERROR';
+
+export function loading() {
+  return {
+    type: LOADING_TRANSACTION_LIST,
+  };
+}
 
 export function setTransactionList(transactions) {
   return {
@@ -10,6 +18,18 @@ export function setTransactionList(transactions) {
 }
 
 export function requestTransactionList(params) {
-  return (dispatch) =>
-    Api.get('/transactions', { params }).then(({ data }) => dispatch(setTransactionList(data)));
+  return (dispatch) => {
+    dispatch(loading());
+    Api.get('/transactions', { params }).then(
+      ({ data }) => dispatch(setTransactionList(data)),
+      (error) => dispatch(setError(error.response.data.errorMessage)),
+    );
+  };
+}
+
+export function setError(errorMessage) {
+  return {
+    type: SET_ERROR,
+    payload: { errorMessage },
+  };
 }

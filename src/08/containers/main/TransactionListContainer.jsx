@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import TransactionList from '../../components/main/TransactionList';
-import { setTransactionList } from '../../actions/transactionActions';
+// import { setTransactionList } from '../../actions/transactionActions';
+import { requestTransactionList } from '../../actions/transactionActions';
 
 const mapStateToProps = (state) => {
   const { ids, entities } = state.transactions;
@@ -10,7 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  setTransactionList,
+  requestTransactionList,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList);

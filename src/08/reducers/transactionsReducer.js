@@ -10,9 +10,9 @@ export default (state = initState, action) => {
 
   switch (type) {
     case SET_TRANSACTION_LIST: {
-      console.log(payload);
+      // console.log(payload);
       const ids = payload.map((entity) => entity['id']);
-      console.log(ids);
+      // console.log(ids);
       window.ids = ids;
       const entities = payload.reduce(
         (finalEntities, entity) => ({
@@ -21,7 +21,7 @@ export default (state = initState, action) => {
         }),
         {},
       );
-      console.log({ ...state, ids, entities });
+      // console.log({ ...state, ids, entities });
       return { ...state, ids, entities };
     }
     default:

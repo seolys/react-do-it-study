@@ -7,7 +7,7 @@ import Button from '../../../doit-ui/Button';
 import InlineList from '../../../doit-ui/InlineList';
 import Form from '../../../doit-ui/Form';
 import { Consumer as ConsumerModal } from '../../../doit-ui/Modal/context';
-import Api from '../../Api';
+// import Api from '../../Api';
 
 class TradeCoinPage extends PureComponent {
   constructor(props) {
@@ -15,13 +15,13 @@ class TradeCoinPage extends PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(values, closeModal) {
-    const { name, code } = this.props;
+    const { name, code, createTransaction } = this.props;
     const formValues = {
       ...values,
       code,
       name,
     };
-    Api.post('/transactions', formValues).then(() => closeModal());
+    createTransaction(formValues, closeModal);
   }
   render() {
     const { name, price, type } = this.props;

@@ -16,6 +16,10 @@ export default (store) => (nextRunner) => (action) => {
     } else if (error && meta[KEY.LIFECYCLE] === LIFECYCLE.FAILURE) {
       store.dispatch(showMessage(error, true));
     }
+  } else if (type === SHOW_NOTIFICATION) {
+    const hide = () => store.dispatch(hideMessage());
+    // setTimeout(hide, 4000);
+    debounceRunner(hide);
   }
 
   return nextRunner(action);

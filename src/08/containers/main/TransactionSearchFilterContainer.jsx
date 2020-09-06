@@ -4,4 +4,8 @@ import TransactionSearchFilter from '../../components/main/TransactionSearchFilt
 import { requestTransactionList } from '../../actions/transactionPackActions';
 import { setFilter } from '../../actions/searchFilterActions';
 
-export default connect(null, { requestTransactionList, setFilter })(TransactionSearchFilter);
+const mapStateToProps = (state) => ({
+  initValues: state.searchFilter.params,
+});
+
+export default connect(mapStateToProps)(TransactionSearchFilter);

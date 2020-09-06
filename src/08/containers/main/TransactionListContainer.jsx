@@ -8,7 +8,7 @@ import {
 } from '../../actions/transactionPackActions';
 import {
   transactionListSelector,
-  loadingStateSelector,
+  // loadingStateSelector,
   transactionListLoadingStateSelector,
 } from '../../selectors/transactionSelectors';
 

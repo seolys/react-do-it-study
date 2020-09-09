@@ -19,6 +19,7 @@ export default (store) => (nextRunner) => (action) => {
   const { type, payload } = action;
   const result = nextRunner(action);
   if (type === SET_LOCATION) {
+    // 주소동기화
     const { pathname, search } = payload.location;
     if (pathname === '/') {
       store.dispatch(setFilter(parse(search)));

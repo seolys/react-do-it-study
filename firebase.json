@@ -1,16 +1,25 @@
 {
   "hosting": {
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "public": "public",
+    "headers": [
+      {
+        "source": "/service-worker.js",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      }
     ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
+        "source": "/api/**",
+        "function": "apiserver"
+      },
+      {
         "source": "**",
-        "destination": "/index.html"
+        "function": "next"
       }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }
